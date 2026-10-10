@@ -25,6 +25,11 @@
         private System.Windows.Forms.Label lblIconoCategoria;
         private System.Windows.Forms.Label lblIconoMonto;
         private System.Windows.Forms.Label lblIconoFecha;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnConsultar;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnLimpiar;
 
         /// <summary>
         /// Limpiar los recursos que se estén usando.
@@ -67,6 +72,11 @@
             this.lblIconoConcepto = new System.Windows.Forms.Label();
             this.lblIconoMonto = new System.Windows.Forms.Label();
             this.lblIconoFecha = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -270,6 +280,102 @@
             this.lblIconoFecha.Size = new System.Drawing.Size(30, 30);
             this.lblIconoFecha.TabIndex = 13;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Location = new System.Drawing.Point(20, 420);
+            this.btnGuardar.Size = new System.Drawing.Size(196, 48);
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(151)))), ((int)(((byte)(88)))));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.TabIndex = 16;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.Location = new System.Drawing.Point(231, 420);
+            this.btnConsultar.Size = new System.Drawing.Size(196, 48);
+            this.btnConsultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(129)))), ((int)(((byte)(234)))));
+            this.btnConsultar.ForeColor = System.Drawing.Color.White;
+            this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultar.FlatAppearance.BorderSize = 0;
+            this.btnConsultar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnConsultar.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.TabIndex = 17;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.Location = new System.Drawing.Point(442, 420);
+            this.btnActualizar.Size = new System.Drawing.Size(196, 48);
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(188)))), ((int)(((byte)(32)))));
+            this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(40)))), ((int)(((byte)(0)))));
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnActualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.TabIndex = 18;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Location = new System.Drawing.Point(653, 420);
+            this.btnEliminar.Size = new System.Drawing.Size(196, 48);
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(65)))), ((int)(((byte)(56)))));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminar.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.TabIndex = 19;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Location = new System.Drawing.Point(864, 420);
+            this.btnLimpiar.Size = new System.Drawing.Size(196, 48);
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(146)))), ((int)(((byte)(172)))));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimpiar.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.TabIndex = 20;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -301,6 +407,11 @@
             this.Controls.Add(this.lblIconoFecha);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.txtFecha);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnConsultar);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSubtitulo);
             this.Controls.Add(this.lblTitulo);
