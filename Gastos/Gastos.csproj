@@ -92,5 +92,20 @@
   <ItemGroup>
     <None Include="Properties\file-box.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\save-check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\broom.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
