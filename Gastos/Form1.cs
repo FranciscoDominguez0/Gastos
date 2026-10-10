@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+using Gastos.Datos;
 
 namespace Gastos
 {
@@ -15,6 +17,37 @@ namespace Gastos
         public Form1()
         {
             InitializeComponent();
+            try
+            {
+                ConexionBD conexionBD = new ConexionBD();
+
+                using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    MessageBox.Show(
+                        "Conexión exitosa con MySQL",
+                        "Conexión",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    lblMensaje.Text = "Conectado a MySQL";
+                    lblMensaje.ForeColor = Color.Green;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error de conexión: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                lblMensaje.Text = "Error al conectar con MySQL";
+                lblMensaje.ForeColor = Color.Red;
+            }
         }
 
         private void lblFondoEncabezado_Click(object sender, EventArgs e)
