@@ -30,6 +30,17 @@
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblFondoHistorial;
+        private System.Windows.Forms.Label lblHistorial;
+        private System.Windows.Forms.Label lblIconoHistorial;
+        private System.Windows.Forms.DataGridView dgvGastos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colConcepto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMonto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
+        private System.Windows.Forms.Label lblFondoEliminar;
+        private System.Windows.Forms.CheckBox chkConfirmarEliminar;
 
         /// <summary>
         /// Limpiar los recursos que se estén usando.
@@ -52,6 +63,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblFondoEncabezado = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -77,7 +91,19 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.lblFondoHistorial = new System.Windows.Forms.Label();
+            this.lblHistorial = new System.Windows.Forms.Label();
+            this.lblIconoHistorial = new System.Windows.Forms.Label();
+            this.dgvGastos = new System.Windows.Forms.DataGridView();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colConcepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFondoEliminar = new System.Windows.Forms.Label();
+            this.chkConfirmarEliminar = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFondoEncabezado
@@ -371,6 +397,140 @@
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = false;
             // 
+            // lblFondoHistorial
+            // 
+            this.lblFondoHistorial.BackColor = System.Drawing.Color.White;
+            this.lblFondoHistorial.Location = new System.Drawing.Point(20, 485);
+            this.lblFondoHistorial.Name = "lblFondoHistorial";
+            this.lblFondoHistorial.Size = new System.Drawing.Size(1040, 210);
+            this.lblFondoHistorial.TabIndex = 21;
+            // 
+            // lblHistorial
+            // 
+            this.lblHistorial.AutoSize = true;
+            this.lblHistorial.BackColor = System.Drawing.Color.White;
+            this.lblHistorial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistorial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
+            this.lblHistorial.Location = new System.Drawing.Point(75, 500);
+            this.lblHistorial.Name = "lblHistorial";
+            this.lblHistorial.Size = new System.Drawing.Size(151, 21);
+            this.lblHistorial.TabIndex = 23;
+            this.lblHistorial.Text = "Historial de gastos";
+            // 
+            // lblIconoHistorial
+            // 
+            this.lblIconoHistorial.BackColor = System.Drawing.Color.White;
+            this.lblIconoHistorial.Location = new System.Drawing.Point(35, 497);
+            this.lblIconoHistorial.Name = "lblIconoHistorial";
+            this.lblIconoHistorial.Size = new System.Drawing.Size(32, 32);
+            this.lblIconoHistorial.TabIndex = 22;
+            // 
+            // dgvGastos
+            // 
+            this.dgvGastos.AllowUserToAddRows = false;
+            this.dgvGastos.AllowUserToDeleteRows = false;
+            this.dgvGastos.AllowUserToResizeColumns = false;
+            this.dgvGastos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvGastos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvGastos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvGastos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(241)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
+            this.dgvGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvGastos.ColumnHeadersHeight = 30;
+            this.dgvGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvGastos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
+            this.colConcepto,
+            this.colCategoria,
+            this.colMonto,
+            this.colFecha});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(137)))), ((int)(((byte)(244)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGastos.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvGastos.EnableHeadersVisualStyles = false;
+            this.dgvGastos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
+            this.dgvGastos.Location = new System.Drawing.Point(35, 540);
+            this.dgvGastos.MultiSelect = false;
+            this.dgvGastos.Name = "dgvGastos";
+            this.dgvGastos.ReadOnly = true;
+            this.dgvGastos.RowHeadersVisible = false;
+            this.dgvGastos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvGastos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvGastos.Size = new System.Drawing.Size(1010, 140);
+            this.dgvGastos.TabIndex = 24;
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "id";
+            this.colId.FillWeight = 35F;
+            this.colId.HeaderText = "ID";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            // 
+            // colConcepto
+            // 
+            this.colConcepto.DataPropertyName = "concepto";
+            this.colConcepto.FillWeight = 180F;
+            this.colConcepto.HeaderText = "Concepto";
+            this.colConcepto.Name = "colConcepto";
+            this.colConcepto.ReadOnly = true;
+            // 
+            // colCategoria
+            // 
+            this.colCategoria.DataPropertyName = "categoria";
+            this.colCategoria.FillWeight = 120F;
+            this.colCategoria.HeaderText = "Categoría";
+            this.colCategoria.Name = "colCategoria";
+            this.colCategoria.ReadOnly = true;
+            // 
+            // colMonto
+            // 
+            this.colMonto.DataPropertyName = "monto";
+            this.colMonto.FillWeight = 90F;
+            this.colMonto.HeaderText = "Monto ($)";
+            this.colMonto.Name = "colMonto";
+            this.colMonto.ReadOnly = true;
+            // 
+            // colFecha
+            // 
+            this.colFecha.DataPropertyName = "fecha";
+            this.colFecha.FillWeight = 110F;
+            this.colFecha.HeaderText = "Fecha";
+            this.colFecha.Name = "colFecha";
+            this.colFecha.ReadOnly = true;
+            // 
+            // lblFondoEliminar
+            // 
+            this.lblFondoEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.lblFondoEliminar.Location = new System.Drawing.Point(20, 710);
+            this.lblFondoEliminar.Name = "lblFondoEliminar";
+            this.lblFondoEliminar.Size = new System.Drawing.Size(510, 55);
+            this.lblFondoEliminar.TabIndex = 26;
+            // 
+            // chkConfirmarEliminar
+            // 
+            this.chkConfirmarEliminar.AutoSize = true;
+            this.chkConfirmarEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.chkConfirmarEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkConfirmarEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkConfirmarEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
+            this.chkConfirmarEliminar.Location = new System.Drawing.Point(40, 727);
+            this.chkConfirmarEliminar.Name = "chkConfirmarEliminar";
+            this.chkConfirmarEliminar.Size = new System.Drawing.Size(320, 19);
+            this.chkConfirmarEliminar.TabIndex = 25;
+            this.chkConfirmarEliminar.Text = "Confirmo que deseo eliminar el registro seleccionado";
+            this.chkConfirmarEliminar.UseVisualStyleBackColor = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -386,7 +546,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(1100, 800);
+            this.ClientSize = new System.Drawing.Size(1072, 800);
             this.Controls.Add(this.lblIconoDatos);
             this.Controls.Add(this.lblSeccionDatos);
             this.Controls.Add(this.lblLineaDatos);
@@ -411,12 +571,19 @@
             this.Controls.Add(this.lblSubtitulo);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblFondoEncabezado);
+            this.Controls.Add(this.lblIconoHistorial);
+            this.Controls.Add(this.lblHistorial);
+            this.Controls.Add(this.dgvGastos);
+            this.Controls.Add(this.chkConfirmarEliminar);
+            this.Controls.Add(this.lblFondoEliminar);
             this.Controls.Add(this.lblFondoDatos);
+            this.Controls.Add(this.lblFondoHistorial);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Gestión de Gastos";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
