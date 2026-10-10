@@ -63,8 +63,8 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.lblIconoDatos = new System.Windows.Forms.Label();
-            this.lblIconoConcepto = new System.Windows.Forms.Label();
             this.lblIconoCategoria = new System.Windows.Forms.Label();
+            this.lblIconoConcepto = new System.Windows.Forms.Label();
             this.lblIconoMonto = new System.Windows.Forms.Label();
             this.lblIconoFecha = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -111,6 +111,7 @@
             this.lblFondoDatos.Name = "lblFondoDatos";
             this.lblFondoDatos.Size = new System.Drawing.Size(1040, 235);
             this.lblFondoDatos.TabIndex = 0;
+            this.lblFondoDatos.Click += new System.EventHandler(this.lblFondoDatos_Click);
             // 
             // lblSeccionDatos
             // 
@@ -233,25 +234,28 @@
             this.lblIconoDatos.Size = new System.Drawing.Size(32, 32);
             this.lblIconoDatos.TabIndex = 1;
             // 
-            // lblIconoConcepto
-            // 
-            this.lblIconoConcepto.BackColor = System.Drawing.Color.White;
-            this.lblIconoConcepto.Location = new System.Drawing.Point(45, 250);
-            this.lblIconoConcepto.Name = "lblIconoConcepto";
-            this.lblIconoConcepto.Size = new System.Drawing.Size(30, 30);
-            this.lblIconoConcepto.TabIndex = 4;
-            // 
             // lblIconoCategoria
             // 
             this.lblIconoCategoria.BackColor = System.Drawing.Color.White;
+            this.lblIconoCategoria.Image = global::Gastos.Properties.Resources.file_box;
             this.lblIconoCategoria.Location = new System.Drawing.Point(560, 250);
             this.lblIconoCategoria.Name = "lblIconoCategoria";
             this.lblIconoCategoria.Size = new System.Drawing.Size(30, 30);
             this.lblIconoCategoria.TabIndex = 7;
             // 
+            // lblIconoConcepto
+            // 
+            this.lblIconoConcepto.BackColor = System.Drawing.Color.White;
+            this.lblIconoConcepto.Image = global::Gastos.Properties.Resources.receipt;
+            this.lblIconoConcepto.Location = new System.Drawing.Point(45, 250);
+            this.lblIconoConcepto.Name = "lblIconoConcepto";
+            this.lblIconoConcepto.Size = new System.Drawing.Size(30, 30);
+            this.lblIconoConcepto.TabIndex = 4;
+            // 
             // lblIconoMonto
             // 
             this.lblIconoMonto.BackColor = System.Drawing.Color.White;
+            this.lblIconoMonto.Image = global::Gastos.Properties.Resources.circle_dollar_sign__1_;
             this.lblIconoMonto.Location = new System.Drawing.Point(45, 350);
             this.lblIconoMonto.Name = "lblIconoMonto";
             this.lblIconoMonto.Size = new System.Drawing.Size(30, 30);
@@ -260,6 +264,7 @@
             // lblIconoFecha
             // 
             this.lblIconoFecha.BackColor = System.Drawing.Color.White;
+            this.lblIconoFecha.Image = global::Gastos.Properties.Resources.calendar_chevrons_right__1_;
             this.lblIconoFecha.Location = new System.Drawing.Point(560, 350);
             this.lblIconoFecha.Name = "lblIconoFecha";
             this.lblIconoFecha.Size = new System.Drawing.Size(30, 30);

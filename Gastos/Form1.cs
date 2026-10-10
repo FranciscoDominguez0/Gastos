@@ -31,5 +31,10 @@ namespace Gastos
         {
 
         }
+
+        private void lblFondoDatos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
