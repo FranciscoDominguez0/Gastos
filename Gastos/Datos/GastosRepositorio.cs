@@ -1,6 +1,7 @@
 ﻿
 using Gastos.Modelos;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,8 +11,6 @@ namespace Gastos.Datos
     {
         private readonly ConexionBD conexionBD = new ConexionBD();
 
-
-        // Guardar un nuevo gasto
         public void Guardar(Gasto gasto)
         {
             const string sql =
@@ -24,25 +23,17 @@ namespace Gastos.Datos
 
                 using (MySqlCommand comando = new MySqlCommand(sql, conexion))
                 {
-                    comando.Parameters.AddWithValue("@concepto", gasto.Concepto);
-                    comando.Parameters.AddWithValue("@categoria", gasto.Categoria);
-                    comando.Parameters.AddWithValue("@monto", gasto.Monto);
-                    comando.Parameters.AddWithValue("@fecha", gasto.Fecha);
-
+                    AgregarParametrosGasto(comando, gasto);
                     comando.ExecuteNonQuery();
                 }
             }
         }
 
-
-        // Consulta de todos los gastos
         public List<Gasto> Consultar()
         {
             return Buscar(string.Empty, string.Empty);
         }
 
-
-        // Buscar gastos por concepto y categoría
         public List<Gasto> Buscar(string concepto, string categoria)
         {
             List<Gasto> gastos = new List<Gasto>();
@@ -91,16 +82,7 @@ namespace Gastos.Datos
                     {
                         while (lector.Read())
                         {
-                            Gasto gasto = new Gasto
-                            {
-                                Id = lector.GetInt32("id"),
-                                Concepto = lector.GetString("concepto"),
-                                Categoria = lector.GetString("categoria"),
-                                Monto = lector.GetDecimal("monto"),
-                                Fecha = lector.GetDateTime("fecha")
-                            };
-
-                            gastos.Add(gasto);
+                            gastos.Add(MapearGasto(lector));
                         }
                     }
                 }
@@ -109,7 +91,6 @@ namespace Gastos.Datos
             return gastos;
         }
 
-        // Actualizar un gasto existente
         public bool Actualizar(Gasto gasto)
         {
             const string sql =
@@ -126,19 +107,14 @@ namespace Gastos.Datos
 
                 using (MySqlCommand comando = new MySqlCommand(sql, conexion))
                 {
+                    AgregarParametrosGasto(comando, gasto);
                     comando.Parameters.AddWithValue("@id", gasto.Id);
-                    comando.Parameters.AddWithValue("@concepto", gasto.Concepto);
-                    comando.Parameters.AddWithValue("@categoria", gasto.Categoria);
-                    comando.Parameters.AddWithValue("@monto", gasto.Monto);
-                    comando.Parameters.AddWithValue("@fecha", gasto.Fecha);
 
                     return comando.ExecuteNonQuery() > 0;
                 }
             }
         }
 
-
-        // Eliminar un gasto por su ID
         public bool Eliminar(int id)
         {
             const string sql = "DELETE FROM gastos WHERE id = @id";
@@ -156,8 +132,26 @@ namespace Gastos.Datos
             }
         }
 
+        private static void AgregarParametrosGasto(
+            MySqlCommand comando,
+            Gasto gasto)
+        {
+            comando.Parameters.AddWithValue("@concepto", gasto.Concepto);
+            comando.Parameters.AddWithValue("@categoria", gasto.Categoria);
+            comando.Parameters.AddWithValue("@monto", gasto.Monto);
+            comando.Parameters.AddWithValue("@fecha", gasto.Fecha);
+        }
 
+        private static Gasto MapearGasto(MySqlDataReader lector)
+        {
+            return new Gasto
+            {
+                Id = lector.GetInt32("id"),
+                Concepto = lector.GetString("concepto"),
+                Categoria = lector.GetString("categoria"),
+                Monto = lector.GetDecimal("monto"),
+                Fecha = lector.GetDateTime("fecha")
+            };
+        }
     }
-
 }
-
