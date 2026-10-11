@@ -108,9 +108,56 @@ namespace Gastos.Datos
 
             return gastos;
         }
+
+        // Actualizar un gasto existente
+        public bool Actualizar(Gasto gasto)
+        {
+            const string sql =
+                "UPDATE gastos SET " +
+                "concepto = @concepto, " +
+                "categoria = @categoria, " +
+                "monto = @monto, " +
+                "fecha = @fecha " +
+                "WHERE id = @id";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(sql, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", gasto.Id);
+                    comando.Parameters.AddWithValue("@concepto", gasto.Concepto);
+                    comando.Parameters.AddWithValue("@categoria", gasto.Categoria);
+                    comando.Parameters.AddWithValue("@monto", gasto.Monto);
+                    comando.Parameters.AddWithValue("@fecha", gasto.Fecha);
+
+                    return comando.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+
+        // Eliminar un gasto por su ID
+        public bool Eliminar(int id)
+        {
+            const string sql = "DELETE FROM gastos WHERE id = @id";
+
+            using (MySqlConnection conexion = conexionBD.ObtenerConexion())
+            {
+                conexion.Open();
+
+                using (MySqlCommand comando = new MySqlCommand(sql, conexion))
+                {
+                    comando.Parameters.AddWithValue("@id", id);
+
+                    return comando.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+
     }
 
-
-
-    }
 }
+

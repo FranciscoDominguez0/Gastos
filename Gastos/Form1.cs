@@ -19,6 +19,7 @@ namespace Gastos
     public partial class Form1 : Form
     {
         private readonly GastoRepositorio repositorio = new GastoRepositorio();
+        private int? idSeleccionado = null;
         public Form1()
         {
             InitializeComponent();
@@ -48,22 +49,11 @@ namespace Gastos
 
         }
 
+        // boton guardar
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (!ValidarGasto.IntentarValidar(
-        txtConcepto.Text,
-        lstCategoria.SelectedItem?.ToString(),
-        txtMonto.Text,
-        txtFecha.Text,
-        out Gasto gasto,
-        out string mensaje))
+            if(!ObtenerGastoValidado(out Gasto gasto))
             {
-                MessageBox.Show(
-                    mensaje,
-                    "Validación",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
                 return;
             }
 
@@ -98,14 +88,82 @@ namespace Gastos
 
         }
 
+        // boton Actualizar
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            if (!idSeleccionado.HasValue)
+            {
+                MessageBox.Show(
+                    "Seleccione un gasto de la tabla para actualizar.",
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
 
+            if (!ObtenerGastoValidado(out Gasto gasto))
+                return;
+
+            gasto.Id = idSeleccionado.Value;
+
+            try
+            {
+                bool actualizado = repositorio.Actualizar(gasto);
+
+                if (!actualizado)
+                {
+                    MessageBox.Show(
+                        "No se actualizó ningún registro. Verifique si hubo cambios.",
+                        "Información",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                    return;
+                }
+
+                LimpiarCampos();
+                idSeleccionado = null;
+                CargarGastos();
+
+                MessageBox.Show(
+                    "Gasto actualizado correctamente.",
+                    "Actualización",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "No fue posible actualizar el gasto.\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
-
+        // Tabla de datos
         private void dgvGastos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            if (dgvGastos.SelectedRows.Count == 0)
+                return;
+
+            Gasto gasto = dgvGastos.SelectedRows[0].DataBoundItem as Gasto;
+
+            if (gasto == null)
+                return;
+
+            idSeleccionado = gasto.Id;
+
+            txtConcepto.Text = gasto.Concepto;
+            lstCategoria.SelectedItem = gasto.Categoria;
+            txtMonto.Text = gasto.Monto.ToString(
+                System.Globalization.CultureInfo.InvariantCulture
+            );
+            txtFecha.Text = gasto.Fecha.ToString("yyyy-MM-dd");
+
+            chkConfirmarEliminar.Checked = false;
         }
 
         //Limpiar campos
@@ -117,8 +175,10 @@ namespace Gastos
             lstCategoria.ClearSelected();
             chkConfirmarEliminar.Checked = false;
             dgvGastos.ClearSelection();
+            idSeleccionado = null;
         }
 
+        // Mostrar gastos en la tabla
         private void MostrarGastos(List<Gasto> gastos)
         {
             dgvGastos.AutoGenerateColumns = false;
@@ -146,12 +206,28 @@ namespace Gastos
             }
         }
 
+        // boton consultar
         private void btnConsultar_Click(object sender, EventArgs e)
         {
             try
             {
                 string concepto = txtConcepto.Text.Trim();
                 string categoria = lstCategoria.SelectedItem?.ToString();
+
+                if (!ValidarGasto.ValidarBusqueda(
+                    concepto,
+                    categoria,
+                    out string mensaje))
+                {
+                    MessageBox.Show(
+                        mensaje,
+                        "Validación",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return;
+                }
 
                 List<Gasto> resultados = repositorio.Buscar(concepto, categoria);
 
@@ -177,6 +253,116 @@ namespace Gastos
                 );
             }
 
+        }
+        // boton limpiar
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+            CargarGastos();
+        }
+
+        private void txtMonto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Validacion de gasto
+        private bool ObtenerGastoValidado(out Gasto gasto)
+        {
+            bool valido = ValidarGasto.IntentarValidar(
+                txtConcepto.Text,
+                lstCategoria.SelectedItem?.ToString(),
+                txtMonto.Text,
+                txtFecha.Text,
+                out gasto,
+                out string mensaje
+            );
+
+            if (!valido)
+            {
+                MessageBox.Show(
+                    mensaje,
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+
+            return valido;
+        }
+
+        // boton eliminar
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (!idSeleccionado.HasValue)
+            {
+                MessageBox.Show(
+                    "Seleccione un gasto de la tabla para eliminar.",
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            if (!chkConfirmarEliminar.Checked)
+            {
+                MessageBox.Show(
+                    "Debe marcar la casilla de confirmación para eliminar.",
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            DialogResult respuesta = MessageBox.Show(
+                "¿Está seguro de que desea eliminar este gasto?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (respuesta != DialogResult.Yes)
+                return;
+
+            try
+            {
+                bool eliminado = repositorio.Eliminar(idSeleccionado.Value);
+
+                if (!eliminado)
+                {
+                    MessageBox.Show(
+                        "El gasto seleccionado ya no existe.",
+                        "Información",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    LimpiarCampos();
+                    CargarGastos();
+                    return;
+                }
+
+                LimpiarCampos();
+                CargarGastos();
+
+                MessageBox.Show(
+                    "Gasto eliminado correctamente.",
+                    "Eliminación exitosa",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "No fue posible eliminar el gasto.\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
     }
 }

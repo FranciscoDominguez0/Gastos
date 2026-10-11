@@ -90,6 +90,26 @@ namespace Gastos.Validaciones
 
             return true;
         }
+
+
+        // Validar búsqueda de gastos
+        public static bool ValidarBusqueda(
+            string concepto,
+            string categoria,
+            out string mensaje)
+        {
+            mensaje = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(concepto) &&
+                string.IsNullOrWhiteSpace(categoria))
+            {
+                mensaje = "Ingrese un concepto o seleccione una categoría para consultar.";
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
 
