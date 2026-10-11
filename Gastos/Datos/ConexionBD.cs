@@ -11,7 +11,7 @@ namespace Gastos.Datos
             "Port=3306;" +
             "Database=laboratorio_crud;" +
             "Uid=root;" +
-            "Pwd=TU_CONTRASEÑA;";
+            "Pwd=12345678;";
 
         public MySqlConnection ObtenerConexion()
         {

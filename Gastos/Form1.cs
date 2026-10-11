@@ -9,45 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Gastos.Datos;
+using Gastos.Modelos;
+using Gastos.Validaciones;
+
 
 namespace Gastos
 {
+    
     public partial class Form1 : Form
     {
+        private readonly GastoRepositorio repositorio = new GastoRepositorio();
         public Form1()
         {
             InitializeComponent();
-            try
-            {
-                ConexionBD conexionBD = new ConexionBD();
-
-                using (MySqlConnection conexion = conexionBD.ObtenerConexion())
-                {
-                    conexion.Open();
-
-                    MessageBox.Show(
-                        "Conexión exitosa con MySQL",
-                        "Conexión",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-
-                    lblMensaje.Text = "Conectado a MySQL";
-                    lblMensaje.ForeColor = Color.Green;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "Error de conexión: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
-                lblMensaje.Text = "Error al conectar con MySQL";
-                lblMensaje.ForeColor = Color.Red;
-            }
+           
         }
 
         private void lblFondoEncabezado_Click(object sender, EventArgs e)
@@ -70,8 +45,70 @@ namespace Gastos
 
         }
 
+
+        private void LimpiarCampos()
+        {
+            txtConcepto.Clear();
+            txtMonto.Clear();
+            txtFecha.Clear();
+            lstCategoria.ClearSelected();
+            chkConfirmarEliminar.Checked = false;
+            dgvGastos.ClearSelection();
+        }
+
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (!ValidarGasto.IntentarValidar(
+        txtConcepto.Text,
+        lstCategoria.SelectedItem?.ToString(),
+        txtMonto.Text,
+        txtFecha.Text,
+        out Gasto gasto,
+        out string mensaje))
+            {
+                MessageBox.Show(
+                    mensaje,
+                    "Validación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            try
+            {
+                repositorio.Guardar(gasto);
+
+                LimpiarCampos();
+
+                MessageBox.Show(
+                    "Gasto guardado correctamente.",
+                    "Registro exitoso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    "No fue posible guardar el gasto.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+
+        }
+
+        private void lblMensaje_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
