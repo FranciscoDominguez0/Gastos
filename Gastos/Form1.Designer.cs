@@ -34,11 +34,6 @@
         private System.Windows.Forms.Label lblHistorial;
         private System.Windows.Forms.Label lblIconoHistorial;
         private System.Windows.Forms.DataGridView dgvGastos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colConcepto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMonto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
         private System.Windows.Forms.Label lblFondoEliminar;
         private System.Windows.Forms.CheckBox chkConfirmarEliminar;
 
@@ -63,9 +58,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblFondoEncabezado = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
@@ -95,14 +90,14 @@
             this.lblHistorial = new System.Windows.Forms.Label();
             this.lblIconoHistorial = new System.Windows.Forms.Label();
             this.dgvGastos = new System.Windows.Forms.DataGridView();
+            this.lblFondoEliminar = new System.Windows.Forms.Label();
+            this.chkConfirmarEliminar = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colConcepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMonto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblFondoEliminar = new System.Windows.Forms.Label();
-            this.chkConfirmarEliminar = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGastos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -342,6 +337,7 @@
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnActualizar
             // 
@@ -432,16 +428,16 @@
             this.dgvGastos.AllowUserToDeleteRows = false;
             this.dgvGastos.AllowUserToResizeColumns = false;
             this.dgvGastos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvGastos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvGastos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvGastos.BackgroundColor = System.Drawing.Color.White;
             this.dgvGastos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(241)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
-            this.dgvGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(241)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
+            this.dgvGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvGastos.ColumnHeadersHeight = 30;
             this.dgvGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvGastos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -450,14 +446,14 @@
             this.colCategoria,
             this.colMonto,
             this.colFecha});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(137)))), ((int)(((byte)(244)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvGastos.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(43)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(137)))), ((int)(((byte)(244)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvGastos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvGastos.EnableHeadersVisualStyles = false;
             this.dgvGastos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(230)))), ((int)(((byte)(245)))));
             this.dgvGastos.Location = new System.Drawing.Point(35, 540);
@@ -469,46 +465,7 @@
             this.dgvGastos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGastos.Size = new System.Drawing.Size(1010, 140);
             this.dgvGastos.TabIndex = 24;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "id";
-            this.colId.FillWeight = 35F;
-            this.colId.HeaderText = "ID";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            // 
-            // colConcepto
-            // 
-            this.colConcepto.DataPropertyName = "concepto";
-            this.colConcepto.FillWeight = 180F;
-            this.colConcepto.HeaderText = "Concepto";
-            this.colConcepto.Name = "colConcepto";
-            this.colConcepto.ReadOnly = true;
-            // 
-            // colCategoria
-            // 
-            this.colCategoria.DataPropertyName = "categoria";
-            this.colCategoria.FillWeight = 120F;
-            this.colCategoria.HeaderText = "Categoría";
-            this.colCategoria.Name = "colCategoria";
-            this.colCategoria.ReadOnly = true;
-            // 
-            // colMonto
-            // 
-            this.colMonto.DataPropertyName = "monto";
-            this.colMonto.FillWeight = 90F;
-            this.colMonto.HeaderText = "Monto ($)";
-            this.colMonto.Name = "colMonto";
-            this.colMonto.ReadOnly = true;
-            // 
-            // colFecha
-            // 
-            this.colFecha.DataPropertyName = "fecha";
-            this.colFecha.FillWeight = 110F;
-            this.colFecha.HeaderText = "Fecha";
-            this.colFecha.Name = "colFecha";
-            this.colFecha.ReadOnly = true;
+            this.dgvGastos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGastos_CellContentClick);
             // 
             // lblFondoEliminar
             // 
@@ -541,6 +498,46 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 3;
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.FillWeight = 35F;
+            this.colId.HeaderText = "ID";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            // 
+            // colConcepto
+            // 
+            this.colConcepto.DataPropertyName = "Concepto";
+            this.colConcepto.FillWeight = 180F;
+            this.colConcepto.HeaderText = "Concepto";
+            this.colConcepto.Name = "colConcepto";
+            this.colConcepto.ReadOnly = true;
+            // 
+            // colCategoria
+            // 
+            this.colCategoria.DataPropertyName = "Categoria";
+            this.colCategoria.FillWeight = 120F;
+            this.colCategoria.HeaderText = "Categoría";
+            this.colCategoria.Name = "colCategoria";
+            this.colCategoria.ReadOnly = true;
+            // 
+            // colMonto
+            // 
+            this.colMonto.DataPropertyName = "Monto";
+            this.colMonto.FillWeight = 90F;
+            this.colMonto.HeaderText = "Monto ($)";
+            this.colMonto.Name = "colMonto";
+            this.colMonto.ReadOnly = true;
+            // 
+            // colFecha
+            // 
+            this.colFecha.DataPropertyName = "Fecha";
+            this.colFecha.FillWeight = 110F;
+            this.colFecha.HeaderText = "Fecha";
+            this.colFecha.Name = "colFecha";
+            this.colFecha.ReadOnly = true;
             // 
             // Form1
             // 
@@ -593,6 +590,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colConcepto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMonto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFecha;
     }
 }
 
